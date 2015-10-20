@@ -7,6 +7,9 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
+using MvcEFTest.Models;
+using System.Data.Entity;
+
 namespace MvcEFTest
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
@@ -16,6 +19,9 @@ namespace MvcEFTest
     {
         protected void Application_Start()
         {
+            //初始化数据库数据
+            Database.SetInitializer<EFDbContext>(new DatabaseInitializer());
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
