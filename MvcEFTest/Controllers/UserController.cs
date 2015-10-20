@@ -4,13 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using MvcEFTest.Models;
+
 namespace MvcEFTest.Controllers
 {
     public class UserController : Controller
     {
+        private EFDbContext db = new EFDbContext();
+
         public ActionResult Index()
         {
-            return View();
+            var users = db.Users.ToList();
+            return View(users);
         }
 
         public ActionResult Edit()

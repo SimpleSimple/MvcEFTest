@@ -1,5 +1,23 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
+@model IList<MvcEFTest.Models.User>
 
 <h2>Index</h2>
+
+<table cellspacing="0" cellpadding="0" border="1">
+    <tr>
+        <td>UserID</td>
+        <td>UserName</td>
+        <td>Password</td>
+        <td>IsEnable</td>
+    </tr>
+    @foreach (var obj in Model) { 
+        <tr>
+            <td>@obj.UserID</td>
+            <td>@obj.UserName</td>
+            <td>@obj.Password</td>
+            <td>@(obj.IsEnable==1?"启用":"暂停")</td>
+        </tr>
+    }
+</table>

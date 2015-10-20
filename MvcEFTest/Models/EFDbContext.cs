@@ -9,9 +9,11 @@ namespace MvcEFTest.Models
 {
     public partial class EFDbContext : DbContext
     {
+        public EFDbContext()
+            : base("EFDbContext")
+        { }
 
-        public virtual IDbSet<User> User { get; set; }
-
+        public virtual IDbSet<User> Users { get; set; }
 
     }
 }

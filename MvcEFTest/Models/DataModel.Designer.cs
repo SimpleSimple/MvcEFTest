@@ -8,15 +8,15 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
-
 namespace MvcEFTest.Models
 {
     #region 上下文
@@ -24,32 +24,32 @@ namespace MvcEFTest.Models
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    public partial class DataModelContext : ObjectContext
+    public partial class Entities : ObjectContext
     {
         #region 构造函数
     
         /// <summary>
-        /// 请使用应用程序配置文件的“EFDbContext”部分中的连接字符串初始化新 EFDbContext 对象。
+        /// 请使用应用程序配置文件的“Entities”部分中的连接字符串初始化新 Entities 对象。
         /// </summary>
-        public DataModelContext() : base("name=EFDbContext", "EFDbContext")
+        public Entities() : base("name=Entities", "Entities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
     
         /// <summary>
-        /// 初始化新的 EFDbContext 对象。
+        /// 初始化新的 Entities 对象。
         /// </summary>
-        public DataModelContext(string connectionString) : base(connectionString, "EFDbContext")
+        public Entities(string connectionString) : base(connectionString, "Entities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
     
         /// <summary>
-        /// 初始化新的 EFDbContext 对象。
+        /// 初始化新的 Entities 对象。
         /// </summary>
-        public DataModelContext(EntityConnection connection) : base(connection, "EFDbContext")
+        public Entities(EntityConnection connection) : base(connection, "Entities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
@@ -82,6 +82,7 @@ namespace MvcEFTest.Models
         private ObjectSet<Users> _Users;
 
         #endregion
+
         #region AddTo 方法
     
         /// <summary>
@@ -93,11 +94,11 @@ namespace MvcEFTest.Models
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region 实体
     
     /// <summary>
@@ -130,6 +131,7 @@ namespace MvcEFTest.Models
         }
 
         #endregion
+
         #region 基元属性
     
         /// <summary>
@@ -256,9 +258,11 @@ namespace MvcEFTest.Models
         partial void OnIsEnableChanged();
 
         #endregion
+
     
     }
 
     #endregion
+
     
 }
