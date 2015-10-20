@@ -1,4 +1,2 @@
-# MvcEFTest
-
-开发环境：
-VS2010+MVC4+EF6
+开发工具：
+	VS2010+MVC+EF6
