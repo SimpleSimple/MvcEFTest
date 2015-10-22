@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Edit";
+}
+@model MvcEFTest.Models.User
+
+@using (Html.BeginForm("Index", "User", FormMethod.Get)) { 
+    <table cellspacing="0" cellpadding="0" border="1" width="60%">
+        <tr>
+            <td colspan="2" align="right"></td>
+            <td><input type="hidden" value="@Model.UserID" /></td>
+        </tr>
+        <tr>
+            <td align="right">UserName:</td>
+            <td>@Html.EditorFor(m=>m.UserName)</td>
+        </tr>
+        <tr>
+            <td align="right">IsEnable:</td>
+            <td>@Model.IsEnable</td>
+        </tr>
+        <tr>
+            <td align="right">Created On:</td>
+            <td>@DateTime.Now.ToString("yyyy-MM-dd")</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Save" name="BtnSubmit"></input></td>
+        </tr>
+    </table>
+}
