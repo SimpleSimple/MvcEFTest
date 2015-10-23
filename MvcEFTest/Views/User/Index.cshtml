@@ -3,12 +3,13 @@
 }
 @model IList<MvcEFTest.Models.User>
 
-<table cellspacing="0" cellpadding="0" border="1">
+<table cellspacing="0" cellpadding="0" border="1" width="60%">
     <tr>
         <td>UserID</td>
         <td>UserName</td>
         <td>Password</td>
         <td>IsEnable</td>
+        <td>Created On</td>
         <td>Actions</td>
     </tr>
     @foreach (var obj in Model) { 
@@ -16,7 +17,8 @@
             <td>@obj.UserID</td>
             <td>@obj.UserName</td>
             <td>@obj.Password</td>
-            <td>@(obj.IsEnable==true?"启用":"禁用")</td>
+            <td>@Html.Raw(obj.IsEnable == true ? "<span style=\"color:#FF0000\">启用</span>" : "<span style=\"color:green\">禁用</span>")</td>
+            <td>@obj.CreateTime.ToString("yyyy-MM-dd")</td>
             <td>@Html.ActionLink("编辑", "Edit", new { id = obj.UserID })</td>
         </tr>
     }

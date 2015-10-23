@@ -44,7 +44,7 @@ namespace MvcEFTest.Controllers
                 int result = db.SaveChanges();
                 
                 if (result > 0)
-                    return RedirectToAction("Index");
+                    return RedirectToAction("index");
                 else return View(model);
             }
 

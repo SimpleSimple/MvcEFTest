@@ -3,10 +3,6 @@
 }
 @model MvcEFTest.Models.User
 
-<style type="text/css">
-body, form{border:0;padding:0;margin:0}
-</style>
-
 @using (Html.BeginForm("edit", "user", FormMethod.Post)) 
 { 
     <table cellspacing="0" cellpadding="0" border="1" width="60%">
@@ -27,11 +23,13 @@ body, form{border:0;padding:0;margin:0}
         </tr>
         <tr>
             <td align="right">Created On:</td>
-            <td>@Html.TextBox("CreateTime", DateTime.Now.ToString("yyyy-MM-dd"))</td>
+            @*<td>@Html.TextBox("CreateTime", DateTime.Now.ToString("yyyy-MM-dd"))</td>*@
+            <td>@Html.TextBox("CreateTime", Model.CreateTime.ToString("yyyy-MM-dd"))</td>
         </tr>
         <tr>
             <td></td>
-            <td><input type="submit" value="Save" name="BtnSubmit" /></td>
+            <td><input type="submit" value="Save" name="BtnSubmit" />
+            @Html.ActionLink("返回首页", "index")</td>
         </tr>
     </table>
 }
