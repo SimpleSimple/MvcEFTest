@@ -35,20 +35,20 @@ namespace MvcEFTest.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(int? id, FormCollection collection)
-        {
-            if (id == null) throw new ArgumentNullException("id");
-
-            var user = db.Users.Where(u => u.UserID == id).Single();
-            if (TryUpdateModel(user))
+        public ActionResult Edit([Bind(Include = "UserID, UserName, IsEnable, CreateTime")]User model, FormCollection collection = null)
+        {            
+            if (ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
 
-                return RedirectToAction("Index");
+                db.Entry(model).State = EntityState.Modified;
+                int result = db.SaveChanges();
+                
+                if (result > 0)
+                    return RedirectToAction("Index");
+                else return View(model);
             }
 
-            return View(user);
+            return View(model);
         }
 
         public ActionResult Delete()

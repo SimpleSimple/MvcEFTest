@@ -16,7 +16,7 @@
             <td>@obj.UserID</td>
             <td>@obj.UserName</td>
             <td>@obj.Password</td>
-            <td>@(obj.IsEnable==1?"启用":"暂停")</td>
+            <td>@(obj.IsEnable==true?"启用":"禁用")</td>
             <td>@Html.ActionLink("编辑", "Edit", new { id = obj.UserID })</td>
         </tr>
     }

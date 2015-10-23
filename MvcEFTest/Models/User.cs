@@ -15,6 +15,10 @@ namespace MvcEFTest.Models
 
         public DateTime CreateTime { get; set; }
 
-        public Byte IsEnable { get; set; }
+        public bool IsEnable
+        {
+            get;
+            set;
+        }
     }
 }
