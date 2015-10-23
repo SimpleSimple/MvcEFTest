@@ -13,10 +13,17 @@ namespace MvcEFTest.Controllers
     {
         private EFDbContext db = new EFDbContext();
 
-        public ActionResult Index()
+        public ActionResult Index(string Search)
         {
-            var users = db.Users.ToList();
-            return View(users);
+            var users = from u in db.Users
+                        select u;
+
+            if (!string.IsNullOrEmpty(Search))
+            {
+                users = users.Where(u => u.UserName.Contains(Search));
+            }
+
+            return View(users.ToList());
         }
 
         public ActionResult Edit()
@@ -36,19 +43,38 @@ namespace MvcEFTest.Controllers
 
         [HttpPost]
         public ActionResult Edit([Bind(Include = "UserID, UserName, IsEnable, CreateTime")]User model, FormCollection collection = null)
-        {            
+        {
             if (ModelState.IsValid)
             {
 
                 db.Entry(model).State = EntityState.Modified;
                 int result = db.SaveChanges();
-                
+
                 if (result > 0)
                     return RedirectToAction("index");
                 else return View(model);
             }
 
             return View(model);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(User user)
+        {
+            if (user == null) throw new ArgumentNullException("user");
+
+            if (ModelState.IsValid)
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+                return RedirectToAction("index");
+            }
+            return View(user);
         }
 
         public ActionResult Delete()

@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+
+
+@using (Html.BeginForm("create", "user", FormMethod.Post)) 
+{ 
+    <table cellspacing="0" cellpadding="0" border="1" width="60%">
+        <tr>
+            <td align="right">UserName:</td>
+            <td>@Html.Editor("UserName")</td>
+        </tr>
+                <tr>
+            <td align="right">Password:</td>
+            <td>@Html.Editor("Password")</td>
+        </tr>
+        <tr>
+            <td align="right">IsEnable:</td>
+            <td>@Html.CheckBox("IsEnable")</td>
+        </tr>
+        <tr>
+            <td align="right">Created On:</td>
+            <td>@Html.TextBox("CreateTime", DateTime.Now.ToString("yyyy-MM-dd"))</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Add" id="BtnAdd" />
+            @Html.ActionLink("返回首页", "index")</td>
+        </tr>
+    </table>
+}
+

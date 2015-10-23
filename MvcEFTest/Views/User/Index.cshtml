@@ -2,24 +2,55 @@
     ViewBag.Title = "Index";
 }
 @model IList<MvcEFTest.Models.User>
-
-<table cellspacing="0" cellpadding="0" border="1" width="60%">
-    <tr>
-        <td>UserID</td>
-        <td>UserName</td>
-        <td>Password</td>
-        <td>IsEnable</td>
-        <td>Created On</td>
-        <td>Actions</td>
-    </tr>
-    @foreach (var obj in Model) { 
-        <tr>
-            <td>@obj.UserID</td>
-            <td>@obj.UserName</td>
-            <td>@obj.Password</td>
-            <td>@Html.Raw(obj.IsEnable == true ? "<span style=\"color:#FF0000\">启用</span>" : "<span style=\"color:green\">禁用</span>")</td>
-            <td>@obj.CreateTime.ToString("yyyy-MM-dd")</td>
-            <td>@Html.ActionLink("编辑", "Edit", new { id = obj.UserID })</td>
-        </tr>
-    }
-</table>
+@using (Html.BeginForm())
+{
+    <div class="search-form" style="width:60%">
+        <div class="search-left" style="float: left; width: 50%;">
+            @Html.ActionLink("添加", "create")
+        </div>
+        <div class="search-right" style="float: right; width: 50%;">
+            搜索:@Html.TextBox("Search", "", new { @class = "form-control", @style = "display:inline" })
+            <input type="submit" name="BtnSearch" />
+        </div>
+        <table cellspacing="0" cellpadding="0" border="1" width="100%">
+            <tr>
+                <td>
+                    UserID
+                </td>
+                <td>
+                    UserName
+                </td>
+                <td>
+                    Password
+                </td>
+                <td>
+                    IsEnable
+                </td>
+                <td>
+                    Created On
+                </td>
+                <td>
+                    Actions
+                </td>
+            </tr>
+            @foreach (var obj in Model)
+            { 
+                <tr>
+                    <td>@obj.UserID
+                    </td>
+                    <td>@obj.UserName
+                    </td>
+                    <td>@obj.Password
+                    </td>
+                    <td>@Html.Raw(obj.IsEnable == true ? "<span style=\"color:#f00\">启用</span>" : "<span style=\"color:green\">禁用</span>")
+                    </td>
+                    <td>@obj.CreateTime.ToString("yyyy-MM-dd")
+                    </td>
+                    <td>@Html.ActionLink("编辑", "edit", new { id = obj.UserID })
+                        @Html.ActionLink("删除", "delete", new { id = obj.UserID })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+}
