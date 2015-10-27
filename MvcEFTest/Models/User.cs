@@ -20,5 +20,7 @@ namespace MvcEFTest.Models
             get;
             set;
         }
+
+        public Role Role { get; set; }
     }
 }
