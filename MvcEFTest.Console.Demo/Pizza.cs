@@ -5,11 +5,10 @@ using System.Text;
 
 namespace MvcEFTest.Console.Demo
 {
-    class Program
+    public class Pizza
     {
-        static void Main(string[] args)
-        {
+        public Pizza() { }
 
-        }
+        private string Taste { get; set; }
     }
 }
