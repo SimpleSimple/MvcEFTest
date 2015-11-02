@@ -9,7 +9,10 @@ namespace MvcEFTest.Console.Demo
     {
         static void Main(string[] args)
         {
+            NYStylePizzaStore nyStore = new NYStylePizzaStore();
+            var pizza = nyStore.OrderPizza("veggie");
 
+            pizza.Prepare();
         }
     }
 }
