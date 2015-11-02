@@ -10,7 +10,6 @@ namespace MvcEFTest.Controllers
 {
     public class RoleController : Controller
     {
-        private RoleRepository repository = new RoleRepository();
 
         public ActionResult Index()
         {
