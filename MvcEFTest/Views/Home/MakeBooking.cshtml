@@ -1,0 +1,21 @@
+﻿@model MvcEFTest.Models.Appointment
+@{
+    ViewBag.Title = "MakeBooking";
+}
+
+@using (Html.BeginForm())
+{ 
+    @Html.ValidationSummary(true)
+
+    <p>Your Name:@Html.EditorFor(m=>m.ClientName)</p>
+    <p>Appointment Date:@Html.EditorFor(m => m.Date)</p>
+    <p><a href="javascript:void(0)">@Html.EditorFor(m => m.TermsAccepted) I accept the term & conditions</a></p>
+    <input type="submit" value="Make Booking" />
+}
+
+
+
+
+
+
+
