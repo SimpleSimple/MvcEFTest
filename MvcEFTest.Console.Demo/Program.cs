@@ -11,8 +11,7 @@ namespace MvcEFTest.Console.Demo
         {
             NYStylePizzaStore nyStore = new NYStylePizzaStore();
             var pizza = nyStore.OrderPizza("veggie");
-
-            pizza.Prepare();
+            
         }
     }
 }
