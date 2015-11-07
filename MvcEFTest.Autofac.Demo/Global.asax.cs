@@ -5,12 +5,12 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Reflection;
 
 using Autofac;
 using Autofac.Integration.Mvc;
-
 using MvcEFTest.Autofac.Demo.Repositories;
-using System.Reflection;
+
 
 namespace MvcEFTest.Autofac.Demo
 {
@@ -38,7 +38,7 @@ namespace MvcEFTest.Autofac.Demo
             builder.RegisterModelBinderProvider();
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
             //builder.RegisterType<UserRepository>().As<IUserRepository>();
-            builder.RegisterType(Assembly.Load("MvcEFTest.Autofac.Demo.Repositories").GetType()).AsImplementedInterfaces();
+            builder.RegisterTypes(Assembly.Load("MvcEFTest.Autofac.Demo.Repositories").GetTypes()).AsImplementedInterfaces();
 
             // Change controller action parameter injection by changing web.config.
             builder.RegisterType<ExtensibleActionInvoker>().As<IActionInvoker>().InstancePerRequest();

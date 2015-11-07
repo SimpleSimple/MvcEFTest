@@ -64,6 +64,16 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MvcEFTest.Autofac.Demo.Model\MvcEFTest.Autofac.Demo.Model.csproj">
+      <Project>{E4AD1C85-4EB4-4345-B27F-0FD73FEA5F6F}</Project>
+      <Name>MvcEFTest.Autofac.Demo.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MvcEFTest.Autofac.Demo.Repository\MvcEFTest.Autofac.Demo.Repositories.csproj">
+      <Project>{DEDD9207-A02E-4F8A-BA72-2B4585AF5DA0}</Project>
+      <Name>MvcEFTest.Autofac.Demo.Repositories</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,12 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
+using Autofac;
+using Autofac.Builder;
 
 namespace MvcEFTest.Console.Demo
 {
-    public class IOC
+    public static class IOC
     {
-        
+        private static IContainer _container;
+
+        public static void ContainerRegister()
+        {
+            var builder = new ContainerBuilder();
+            builder.RegisterType<UserRespository>().As<IUserRepository>();
+
+            _container.Resolve<UserRespository>();
+            _container = builder.Build();
+        }
     }
 }
