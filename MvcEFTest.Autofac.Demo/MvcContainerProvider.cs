@@ -1,6 +1,5 @@
 ﻿using System;
 
-
 using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.Web;
