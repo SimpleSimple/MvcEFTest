@@ -1,0 +1,11 @@
+﻿@model MvcEFTest.Autofac.Demo.Models.User[]
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@foreach (var user in Model)
+{ 
+    <p>@(user.UserName + "----" + user.Password)</p>
+}
+
