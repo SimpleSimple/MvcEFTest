@@ -1,3 +1,9 @@
 1）学习《Head First Design Pattern》，了解工厂模式
 
 2）练习仓储模式，了解如何在MVC中运用仓储模式（Repository）
+
+2015.11.07
+1）已了解Autofac依赖注入
+	步骤：
+	1、对MVC项目的所有Controller进行注入
+	2、对项目的所有接口实现类进行注入
