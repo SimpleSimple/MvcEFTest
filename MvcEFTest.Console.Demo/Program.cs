@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
 using System.Reflection;
 
 using Autofac;
@@ -24,11 +22,29 @@ namespace MvcEFTest.Console.Demo
 
             //GetAll();
 
-            var types = Assembly.Load("MvcEFTest.Autofac.Demo.Repositories").GetTypes();
-            foreach (var obj in types)
+            ////反射
+            //var types = Assembly.Load("MvcEFTest.Autofac.Demo.Repositories").GetTypes();
+            //foreach (var obj in types)
+            //{
+            //    System.Console.WriteLine(obj.FullName);
+            //}
+
+            System.Console.Write("1)工厂示例\r\n2)反射示例\r\n3)序列化对象示例\r\n请输入:");
+            int i = Convert.ToInt32(System.Console.ReadLine());
+            switch (i)
             {
-                System.Console.WriteLine(obj.FullName);
+                case 3:
+                    ExecuteMethod3();
+                    break;
+                default: break;
             }
+        }
+
+        private static void ExecuteMethod3()
+        {
+            var user = new { UserId = 1, UserName = "duoqingjianke", Password = "123456" };
+            string json = Newtonsoft.Json.JsonConvert.SerializeObject(user);
+            System.Console.WriteLine(json);
         }
 
         public static void GetAll()
