@@ -1,14 +1,43 @@
 ﻿@{
     ViewBag.Title = "QQLogin.cshtml";
+    Layout = null;
 }
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+<meta property="qc:admins" content="2413174141141655644" />
+<title>@ViewBag.Title</title>
 
-<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101237453" data-redirecturi="http://www.99ducaijing.com" charset="utf-8"></script>
+<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js"
+    data-appid="101237453" data-redirecturi="http://www.localtest.com" charset="utf-8"></script>
+</head>
+<body>
 
 <a id="qqLoginBtn" href="#"></a>
 
 <script type="text/javascript">
     QC.Login({ btnId: 'qqLoginBtn' },
     function (reqData, opts) {
-        alert("TRUE");
+        //alert("TRUE");
+
+        var dom = document.getElementById(opts['btnId']),
+       _logoutTemplate = [
+            //头像
+            '<span><img src="{figureurl}" class="{size_key}"/></span><br/>',
+            //昵称
+            '<span style="color:#690;">{nickname}，您好，您已成功接入QQ！</span><br/>',
+            //退出
+            '<span><a href="javascript:QC.Login.signOut();" style="color:#f60;">==点此登出==</a></span>'
+            ].join("");
+        dom && (dom.innerHTML = QC.String.format(_logoutTemplate, {
+            nickname: QC.String.escHTML(reqData.nickname),
+            figureurl: reqData.figureurl
+        }));
+
     });
 </script>
+
+</body>
+</html>
