@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
 using MvcEFTest.Models;
 
 namespace MvcEFTest.Controllers
 {
     public class HomeController : Controller
     {
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         public ActionResult MakeBooking()
         {
             return View(new Appointment { Date = DateTime.Now });
@@ -35,7 +41,7 @@ namespace MvcEFTest.Controllers
             if (ModelState.IsValidField("ClientName") && ModelState.IsValidField("Date")
                 && appt.ClientName == "Joe" && appt.Date.DayOfWeek == DayOfWeek.Monday)
             {
-                    ModelState.AddModelError("", "Joe cannot book appointment on Mondays"); //添加model-level级的错误提示
+                ModelState.AddModelError("", "Joe cannot book appointment on Mondays"); //添加model-level级的错误提示
             }
 
             if (ModelState.IsValid)
@@ -43,7 +49,8 @@ namespace MvcEFTest.Controllers
             else return View();
         }
 
-        public ActionResult QQLogin() {
+        public ActionResult QQLogin()
+        {
             return View();
         }
     }
