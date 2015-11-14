@@ -135,6 +135,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Impl\Repository.cs" />
+    <Compile Include="Infrastructure\DebugDataViewEngine.cs" />
+    <Compile Include="Infrastructure\DebugDataViwe.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\DatabaseInitializer.cs" />

@@ -7,13 +7,19 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-using MvcEFTest.Models;
 using System.Data.Entity;
+using MvcEFTest.Models;
+using MvcEFTest.Infrastructure;
 
 namespace MvcEFTest
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+            if (Context.Request.FilePath == "/") Context.RewritePath("/Home/Index");
+        }
+
         protected void Application_Start()
         {
             //初始化数据库数据
@@ -25,6 +31,8 @@ namespace MvcEFTest
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            ViewEngines.Engines.Add(new DebugDataViewEngine());
         }
     }
 }
