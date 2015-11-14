@@ -42,5 +42,9 @@ namespace MvcEFTest.Controllers
                 return View("Complete", appt);
             else return View();
         }
+
+        public ActionResult QQLogin() {
+            return View();
+        }
     }
 }

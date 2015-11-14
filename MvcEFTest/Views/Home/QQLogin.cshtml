@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "QQLogin.cshtml";
+}
+
+<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101237453" data-redirecturi="http://www.99ducaijing.com" charset="utf-8"></script>
+
+<a id="qqLoginBtn" href="#"></a>
+
+<script type="text/javascript">
+    QC.Login({ btnId: 'qqLoginBtn' },
+    function (reqData, opts) {
+        alert("TRUE");
+    });
+</script>
