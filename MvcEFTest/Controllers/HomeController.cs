@@ -12,7 +12,8 @@ namespace MvcEFTest.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            ViewBag.Time = DateTime.Now.ToShortDateString();
+            return View("DebugData");
         }
 
         public ActionResult MakeBooking()
