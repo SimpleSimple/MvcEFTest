@@ -12,7 +12,9 @@ namespace MvcEFTest.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Message = "Hello, MVC";
             ViewBag.Time = DateTime.Now.ToShortDateString();
+
             return View("DebugData");
         }
 

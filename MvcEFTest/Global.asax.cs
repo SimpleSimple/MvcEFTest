@@ -32,7 +32,8 @@ namespace MvcEFTest
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            ViewEngines.Engines.Add(new DebugDataViewEngine());
+            //ViewEngines.Engines.Add(new DebugDataViewEngine());
+            ViewEngines.Engines.Insert(0, new DebugDataViewEngine());
         }
     }
 }
